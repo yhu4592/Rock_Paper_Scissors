@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body></body>
+    <script>
+        function computerPlay(){
+            let moves = ["rock", "paper", "scissors"];
+            return moves[(Math.floor(Math.random()*3))]
+        }
+        function playRound(playerSelection, computerSelection){
+            if(playerSelection.toLowerCase()==="rock"){
+                if(computerSelection==="scissors"){
+                    return ("You Win! Rock beats Scissors")
+                }
+                else if(computerSelection==="paper"){
+                    return ("You Lose! Paper beats Rock")
+                }
+                else{
+                    return ("It's a Tie!")
+                }
+            }
+            else if (playerSelection.toLowerCase()==="paper"){
+                if(computerSelection==="scissors"){
+                    return ("You Lose! Scissors beat Paper")
+                }
+                else if (computerSelection==="rock"){
+                    return ("You Win! Paper Beats Rock")
+                }
+                else{
+                    return ("IT's a Tie!")
+                }
+            }
+            else{
+                if(computerSelection==="rock"){
+                    return ("You Lose! Rock beats Scissors")
+                }
+                else if (computerSelection==="paper"){
+                    return ("You Win! Scissors beats Paper")
+                }
+                else{
+                    return ("It's a Tie!")
+                }
+            }
+        }
+    </script>
+</html>
