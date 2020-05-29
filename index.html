@@ -27,7 +27,7 @@
                     return ("You Win! Paper Beats Rock")
                 }
                 else{
-                    return ("IT's a Tie!")
+                    return ("It's a Tie!")
                 }
             }
             else{
@@ -40,6 +40,17 @@
                 else{
                     return ("It's a Tie!")
                 }
+            }
+        }
+        function game(){
+            let moves = ["rock", "paper", "scissors"];
+            for (var i = 0; i < 5; i++){
+                var computerSelection = computerPlay();
+                var playerSelection = prompt("Rock, paper, or scissors?")
+                while(!moves.includes(playerSelection.toLowerCase())){
+                    playerSelection = prompt("Invalid value. Please select rock, paper, or scissors.")
+                }
+                console.log("Round " + (i+1) + "\nComputer plays " + computerSelection + "\nYou play " + playerSelection + "\nResult: "+playRound(playerSelection, computerSelection))
             }
         }
     </script>
