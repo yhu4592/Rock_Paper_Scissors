@@ -1,15 +1,48 @@
 <!DOCTYPE html>
 <html>
     <head></head>
-    <body></body>
+    <body>
+        <div>
+            <button id = "rock">Rock</button>
+            <button id = "paper">Paper</button>
+            <button id = "scissors">Scissors</button>
+        </div>
+        <div id = "results">
+
+        </div>
+        
+    </body>
     <script>
-        var playerScore = 0;
-        var compScore = 0;
-        function computerPlay(){
+    var playerScore = 0;
+    var compScore = 0;
+
+    const rock = document.querySelector("#rock");
+    rock.addEventListener('click', ()=>{
+        playerSelection = "rock";
+        
+        playRound(playerSelection, computerPlay())
+        console.log(playerScore);
+        console.log(compScore);
+    })
+
+    const paper = document.querySelector("#paper");
+    paper.addEventListener('click', ()=>{
+        playerSelection = "paper";
+        playRound(playerSelection, computerPlay())
+    })
+
+    const scissors = document.querySelector("#scissors");
+    scissors.addEventListener('click', ()=>{
+        playerSelection = "scissors";
+        playRound(playerSelection, computerPlay())
+    })
+
+    function computerPlay(){
             let moves = ["rock", "paper", "scissors"];
             return moves[(Math.floor(Math.random()*3))]
         }
-        function playRound(playerSelection, computerSelection){
+
+    function playRound(playerSelection, computerSelection){
             if(playerSelection.toLowerCase()==="rock"){
                 if(computerSelection==="scissors"){
                     playerScore++;
@@ -50,16 +83,7 @@
                 }
             }
         }
-        function game(){
-            let moves = ["rock", "paper", "scissors"];
-            for (var i = 0; i < 5; i++){
-                var computerSelection = computerPlay();
-                var playerSelection = prompt("Rock, paper, or scissors?")
-                while(!moves.includes(playerSelection.toLowerCase())){
-                    playerSelection = prompt("Invalid value. Please select rock, paper, or scissors.")
-                }
-                console.log("Round " + (i+1) + "\nComputer plays " + computerSelection + "\nYou play " + playerSelection + "\nResult: "+playRound(playerSelection, computerSelection) + "\nScore" + "\nPlayer: " + playerScore + "\nComputer: " + compScore)
-            }
-        }
+    document.getElementById("results").innerHTML = "Results " + "Player: " + playerScore + "\nComputer: " + compScore;
+        
     </script>
 </html>
