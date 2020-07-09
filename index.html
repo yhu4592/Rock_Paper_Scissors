@@ -2,27 +2,28 @@
 <html>
     <head></head>
     <body>
-        <div>
+        <div id = "results">
+            <p1 id = 'title'>Results</p1>
+            <p2 id = 'playerScore'>0</p2>
+            <p3 id='compScore'>0</p3>
+        </div>
+        <div id = "buttons">
             <button id = "rock">Rock</button>
             <button id = "paper">Paper</button>
             <button id = "scissors">Scissors</button>
         </div>
-        <div id = "results">
-
+        <div id = "gameText">
         </div>
+        
         
     </body>
     <script>
     var playerScore = 0;
     var compScore = 0;
-
     const rock = document.querySelector("#rock");
     rock.addEventListener('click', ()=>{
-        playerSelection = "rock";
-        
+        playerSelection = "rock"; 
         playRound(playerSelection, computerPlay())
-        console.log(playerScore);
-        console.log(compScore);
     })
 
     const paper = document.querySelector("#paper");
@@ -46,44 +47,74 @@
             if(playerSelection.toLowerCase()==="rock"){
                 if(computerSelection==="scissors"){
                     playerScore++;
-                    return ("You Win! Rock beats Scissors")
+                    document.getElementById('playerScore').innerHTML = playerScore; 
+                    document.getElementById("gameText").innerHTML ="You Win! Rock beats Scissors";
+                    checkWinner()
                 }
                 else if(computerSelection==="paper"){
                     compScore++;
-                    return ("You Lose! Paper beats Rock")
+                    document.getElementById('compScore').innerHTML = compScore; 
+                    document.getElementById("gameText").innerHTML = "You Lose! Paper beats Rock";
+                    checkWinner()
                 }
                 else{
-                    return ("It's a Tie!")
+                    document.getElementById("gameText").innerHTML ="It's a Tie!";
+                    checkWinner()
                 }
             }
             else if (playerSelection.toLowerCase()==="paper"){
                 if(computerSelection==="scissors"){
                     compScore++;
-                    return ("You Lose! Scissors beat Paper")
+                    document.getElementById('compScore').innerHTML = compScore; 
+                    document.getElementById("gameText").innerHTML ="You Lose! Scissors beat Paper";
+                    checkWinner()
                 }
                 else if (computerSelection==="rock"){
                     playerScore++;
-                    return ("You Win! Paper Beats Rock")
+                    document.getElementById('playerScore').innerHTML = playerScore; 
+                    document.getElementById("gameText").innerHTML ="You Win! Paper Beats Rock";
+                    checkWinner()
                 }
                 else{
-                    return ("It's a Tie!")
+                    document.getElementById("gameText").innerHTML ="It's a Tie!";
+                    checkWinner()
                 }
             }
             else{
                 if(computerSelection==="rock"){
                     compScore++;
-                    return ("You Lose! Rock beats Scissors")
+                    document.getElementById('compScore').innerHTML = compScore; 
+                    document.getElementById("gameText").innerHTML ="You Lose! Rock beats Scissors";
+                    checkWinner()
                 }
                 else if (computerSelection==="paper"){
                     playerScore++;
-                    return ("You Win! Scissors beats Paper")
+                    document.getElementById('playerScore').innerHTML = playerScore; 
+                    document.getElementById("gameText").innerHTML ="You Win! Scissors beats Paper";
+                    checkWinner()
                 }
                 else{
-                    return ("It's a Tie!")
+                    document.getElementById("gameText").innerHTML ="It's a Tie!";
+                    checkWinner()
                 }
             }
         }
-    document.getElementById("results").innerHTML = "Results " + "Player: " + playerScore + "\nComputer: " + compScore;
+    function checkWinner(){
+        if (playerScore === 5){
+            alert("You have won the game!");
+            playerScore = 0;
+            compScore = 0;
+            document.getElementById("playerScore").innerHTML = playerScore;
+            document.getElementById("compScore").innerHTML = compScore;
+        }
+        else if (compScore === 5){
+            alert("The computer has won the game!");
+            playerScore = 0;
+            compScore = 0;
+            document.getElementById("playerScore").innerHTML = playerScore;
+            document.getElementById("compScore").innerHTML = compScore;
+        }
+    }
         
     </script>
 </html>
